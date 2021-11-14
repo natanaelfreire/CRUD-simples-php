@@ -47,6 +47,7 @@
             <table class="table table-hover">
               <thead class="thead-dark">
                 <tr>
+                  <th scope="col" class="text-center">Foto</th>
                   <th scope="col">Nome</th>
                   <th scope="col">Endereço</th>
                   <th scope="col">Telefone</th>
@@ -65,8 +66,12 @@
                     $email = $linha['email'];
                     $data_nascimento = $linha['data_nascimento'];
                     $data_nascimento = mostra_data($data_nascimento);
+                    $foto = $linha['foto']; 
+                    if (!$foto) 
+                      $foto = 'default-profile.png';
 
                     echo "<tr>
+                            <td><img src='img/$foto' style='width: 70px; border-radius: 70px;'></td>
                             <th scope='row'>$nome</th>
                             <td>$endereco</td>
                             <td>$telefone</td>

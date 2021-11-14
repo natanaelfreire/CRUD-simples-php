@@ -22,13 +22,17 @@
             $telefone = $_POST['telefone'];
             $email = $_POST['email'];
             $data_nascimento = $_POST['data_nascimento'];
+            $foto_base64 = $_POST['foto_base64'];
 
-            // $sql = "INSERT INTO `pessoas`
-            //   (`nome`, `endereco`, `telefone`, `email`, `data_nascimento`) VALUES 
-            //   ('$nome','$endereco','$telefone','$email','$data_nascimento')";
+            $foto = $_FILES['foto'];
+            $nome_foto = mover_foto($foto);
+            if ($nome_foto == 0) {
+              $nome_foto = 'erro_na_foto.jpg';
+              $foto_base64 = 'error';
+            }
 
             $sql = "UPDATE `pessoas` set 
-                    `nome` = '$nome', `endereco` = '$endereco', `telefone` = '$telefone', `email` = '$email', `data_nascimento` = '$data_nascimento' 
+                    `nome` = '$nome', `endereco` = '$endereco', `telefone` = '$telefone', `email` = '$email', `data_nascimento` = '$data_nascimento', `foto` = '$nome_foto', `foto_base64` = '$foto_base64' 
                     WHERE cod_pessoa = $id";
 
             if (mysqli_query($conn, $sql)) {
@@ -38,7 +42,7 @@
             }
           ?>
 
-          <a href="index.php" class="btn btn-primary">Voltar</a>
+          <a href="pesquisa.php" class="btn btn-primary">Voltar</a>
         </div>
     </div>
 
