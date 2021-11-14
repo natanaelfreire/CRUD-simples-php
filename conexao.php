@@ -1,8 +1,10 @@
 <?php
-  $server = "localhost";
-  $user = "root";
-  $pass = "123";
-  $bd = "empresa";
+  include "env.php";
+
+  $server = $ENV_SERVER;
+  $user = $ENV_USER;
+  $pass = $ENV_PASSWORD;
+  $bd = $ENV_BD;
 
   if ($conn = mysqli_connect($server, $user, $pass, $bd)) {
     // echo "Conectado!";
